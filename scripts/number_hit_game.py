@@ -1,7 +1,3 @@
-# SPDX-License-Identifier: BSD
-"""
-    Copyright (C) 2020  Ryuichi Ueda. All right reserved.
-"""
 #!/usr/bin/env python3
 
 import random
