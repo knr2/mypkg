@@ -8,8 +8,8 @@ import random
 import rospy
 from std_msgs.msg import Int32
 
-rospy.init_node('report')
-pub = rospy.Publisher('report', Int32, queue_size=1)
+rospy.init_node('game')
+pub = rospy.Publisher('game', Int32, queue_size=1)
 rate = rospy.Rate(10)
 
 x = 0   # 変数定義
