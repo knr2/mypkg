@@ -17,7 +17,7 @@
 ```sh
 cd ~/catkin_ws/src/
 git clone https://github.com/knr2/mypkg.git
-cd ~/catkin_wa
+cd ..
 catkin_make
 source ~/.bashrc
 ```
@@ -30,7 +30,7 @@ source ~/.bashrc
 
 ターミナル１
 ```sh
-roscore
+roscore &
 rosrun mypkg number_hit_game.py
 ```
 
