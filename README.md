@@ -10,7 +10,7 @@
 
 - raspberry pi 4 (8GB)
 - OS: Ubuntu 20.04.1 LTS
-- ROS: Noetic Ninjemys
+- ROS: Noetic
 
 # インストール方法
 
