@@ -41,14 +41,14 @@ print("数当てゲームを", max_round, "回やります。")
 print(max_round, "回のやった際の入力回数が少ないほど高スコアになります。")
 print("入力する数値は特定の規則に乗っ取り変化します。")
 
-rospy.sleep(10)
+rospy.sleep(2)
 
 print("例 目標が61のとき")
 print("1 → 5, 2 → 7, 3 → 9 ならば2x + 3という規則に乗っ取っている。")
 print("なので29を入力すれば61になるのでクリア！")
 print("")
 
-rospy.sleep(10)
+rospy.sleep(2)
 
 # a, b, 答えを決める
 while(round < max_round):
@@ -137,6 +137,6 @@ elif(max_round * 15 >= miss):
     print("\033[36mスコア : C!\033[0m")
 # それ以外
 else:
-    print("\033[47mスコア : D!\033[0m")
+    print("スコア : D!")
 
 print("入力回数 : ", miss, "回")
