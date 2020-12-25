@@ -35,8 +35,7 @@ roscore &
 rosrun mypkg number_hit_game.py
 ```
 
-エラーが出る場合
--/usr/bin/env: `python3\r': そのようなファイルやディレクトリはありません
+「/usr/bin/env: `python3\r': そのようなファイルやディレクトリはありません」とエラーが出る場合
 
 以下のコマンドを打って、もう一度ターミナル1のコマンドを打ってください。
 
