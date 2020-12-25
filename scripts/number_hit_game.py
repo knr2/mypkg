@@ -4,8 +4,8 @@ import rospy
 import random
 from std_msgs.msg import Int32
 
-rospy.init_node('game')
-pub = rospy.Publisher('game', Int32, queue_size=1)
+rospy.init_node("game")
+pub = rospy.Publisher("game", Int32, queue_size=1)
 rate = rospy.Rate(10)
 
 x = 0   # 変数定義
@@ -36,17 +36,17 @@ def x_square(tmp):
     else:
         return a * tmp * tmp + b
 
-print('説明')
-print('数当てゲームを', max_round, '回やります。')
-print(max_round, '回のやった際の入力回数が少ないほど高スコアになります。')
-print('入力する数値は特定の規則に乗っ取り変化します。')
+print("説明")
+print("数当てゲームを", max_round, "回やります。")
+print(max_round, "回のやった際の入力回数が少ないほど高スコアになります。")
+print("入力する数値は特定の規則に乗っ取り変化します。")
 
 rospy.sleep(10)
 
-print('例 目標が61のとき')
-print('1 → 5, 2 → 7, 3 → 9 ならば2x + 3という規則に乗っ取っている。')
-print('なので29を入力すれば61になるのでクリア！')
-print('')
+print("例 目標が61のとき")
+print("1 → 5, 2 → 7, 3 → 9 ならば2x + 3という規則に乗っ取っている。")
+print("なので29を入力すれば61になるのでクリア！")
+print("")
 
 rospy.sleep(10)
 
@@ -56,8 +56,8 @@ while(round < max_round):
     # 始まるタイミングでラウンドを増やす
     round = round + 1
     print()
-    print('ステージ' , end='')
-    print(round, '!')
+    print("ステージ" , end="")
+    print(round, "!")
 
     rospy.sleep(1)
 
@@ -65,7 +65,7 @@ while(round < max_round):
     a = random.randint(-1 * round * a_range_factor, round * a_range_factor)
     b = random.randint(-1 * round * b_range_factor, round * b_range_factor)
     
-    print('以下の答えになる整数を探してください。')
+    print("以下の答えになる整数を探してください。")
     
     # 二乗が出てもよいなら乱数でどっちを出題するか決める
     if(round >= mul_round):
@@ -82,22 +82,22 @@ while(round < max_round):
 
     rospy.sleep(1)
 
-    print('xを入力してください。')
-    print('今回のステージでのxの取る範囲は', -1 * round * x_range_factor , '≦ x ≦ ', round * x_range_factor, 'です。')
+    print("xを入力してください。")
+    print("今回のステージでのxの取る範囲は", -1 * round * x_range_factor , "≦ x ≦ ", round * x_range_factor, "です。")
     
     # 入力部
     while not rospy.is_shutdown():
         
         tmp = ""
-        print('整数を入力してください。')
+        print("整数を入力してください。")
         tmp = input()
         
         try:
             int(tmp)
             x = int(tmp)
         except ValueError:
-            print('数字以外が含まれています。')
-            print('半角数字になっているか確認後再入力をしてください。')
+            print("\033[31m数字以外が含まれています。\033[0m")
+            print("\033[31m半角数字になっているか確認後再入力をしてください。\033[0m")
             continue
 
         if(flag):
@@ -110,8 +110,8 @@ while(round < max_round):
         rate.sleep()
         
         if(x == answer):
-            print('クリア')
-            print('')
+            print("クリア")
+            print("")
             break
         else:
             miss = miss + 1
@@ -119,24 +119,24 @@ while(round < max_round):
 # スコアを決める
 # バグ利用時
 if(miss == 0):
-    print('スコア : SSS!')
+    print("\033[31mスコア : SSS!\033[0m")
 # 平均3回以内
 elif(max_round * 3 >= miss):
-    print('スコア : SS!')
+    print("\033[32mスコア : SS!\033[0m")
 # 平均4回以内
 elif(max_round * 4 >= miss):
-    print('スコア : S!')
+    print("\033[33mスコア : S!\033[0m")
 # 平均6回以内
 elif(max_round * 6 >= miss):
-    print('スコア : A!')
+    print("\033[34mスコア : A!\033[0m")
 # 平均10回以内
 elif(max_round * 10 >= miss):
-    print('スコア : B!')
+    print("\033[35mスコア : B!\033[0m")
 # 平均15回以内
 elif(max_round * 15 >= miss):
-    print('スコア : C!')
+    print("\033[36mスコア : C!\033[0m")
 # それ以外
 else:
-    print('スコア : D!')
+    print("\033[47mスコア : D!\033[0m")
 
-print('入力回数 : ', miss, '回')
+print("入力回数 : ", miss, "回")
