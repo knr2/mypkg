@@ -117,23 +117,26 @@ while(round < max_round):
             miss = miss + 1
 
 # スコアを決める
-#平均3回以内
-if(max_round * 3 >= miss):
+# バグ利用
+if(miss == 0):
+    print('スコア : SSS!')
+# 平均3回以内
+elif(max_round * 3 >= miss):
     print('スコア : SS!')
-#平均4回以内
+# 平均4回以内
 elif(max_round * 4 >= miss):
     print('スコア : S!')
-#平均6回以内
+# 平均6回以内
 elif(max_round * 6 >= miss):
     print('スコア : A!')
-#平均10回以内
+# 平均10回以内
 elif(max_round * 10 >= miss):
     print('スコア : B!')
-#平均15回以内
+# 平均15回以内
 elif(max_round * 15 >= miss):
     print('スコア : C!')
-#それ以外
+# それ以外
 else:
     print('スコア : D!')
 
-print('入力回数 : ', miss, '!')
+print('入力回数 : ', miss, '回')
