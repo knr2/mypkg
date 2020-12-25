@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import random
 import rospy
+import random
 from std_msgs.msg import Int32
 
 rospy.init_node('game')
@@ -20,8 +20,8 @@ a_range_factor = 10 # aの範囲を決めるための補正値
 b_range_factor = 25 # bの範囲を決めるための補正値
 x_range_factor = 35 # xの範囲を決めるための補正値
 
-max_round = 10  # ゲームをやる回数
-mul_round = 5   # 2乗が出てくるタイミング
+max_round = 4   # ゲームをやる回数
+mul_round = 2   # 2乗が出てくるタイミング
 
 # ax + b
 def x_linear(tmp):
@@ -37,9 +37,18 @@ def x_square(tmp):
         return a * tmp * tmp + b
 
 print('説明')
-print('数当てゲームを10回やります。')
-print('10回の合計回数をなるべく少なくしてください。')
-print('入力する数値は特定の規則に乗っ取って変化します。')
+print('数当てゲームを', max_round, '回やります。')
+print(max_round, '回のやった際の入力回数が少ないほど高スコアになります。')
+print('入力する数値は特定の規則に乗っ取り変化します。')
+
+rospy.sleep(10)
+
+print('例 目標が61のとき')
+print('1 → 5, 2 → 7, 3 → 9 ならば2x + 3という規則に乗っ取っている。')
+print('なので29を入力すれば61になるのでクリア！')
+print('')
+
+rospy.sleep(10)
 
 # a, b, 答えを決める
 while(round < max_round):
@@ -47,8 +56,10 @@ while(round < max_round):
     # 始まるタイミングでラウンドを増やす
     round = round + 1
     print()
-    print(round , end='')
-    print('ステージ')
+    print('ステージ' , end='')
+    print(round, '!')
+
+    rospy.sleep(1)
 
     # 乱数でa, bの値を決める
     a = random.randint(-1 * round * a_range_factor, round * a_range_factor)
@@ -61,25 +72,38 @@ while(round < max_round):
         flag = random.randint(0, 1)
     
     # 作成した式に範囲内で代入を行い
-    if(flag == 0):
-        answer = x_linear(random.randint(-1 * round * x_range_factor, round * x_range_factor))
-    else:
+    if(flag):
         answer = x_square(random.randint(0, round * x_range_factor))
+    else:
+        answer = x_linear(random.randint(-1 * round * x_range_factor, round * x_range_factor))
     
+    print(answer)
+    print()
+
+    rospy.sleep(1)
+
     print('xを入力してください。')
     print('今回のステージでのxの取る範囲は', -1 * round * x_range_factor , '≦ x ≦ ', round * x_range_factor, 'です。')
-    print(answer)
     
     # 入力部
     while not rospy.is_shutdown():
         
+        tmp = ""
         print('整数を入力してください。')
-        x = input()
+        tmp = input()
         
-        if(flag == 0):
-            x = x_linear((int)(x))
-        else:
+        try:
+            int(tmp)
+            x = int(tmp)
+        except ValueError:
+            print('数字以外が含まれています。')
+            print('半角数字になっているか確認後再入力をしてください。')
+            continue
+
+        if(flag):
             x = x_square((int)(x))
+        else:
+            x = x_linear((int)(x))
         
         print(x)
         pub.publish(x)
@@ -87,9 +111,29 @@ while(round < max_round):
         
         if(x == answer):
             print('クリア')
+            print('')
             break
         else:
             miss = miss + 1
 
 # スコアを決める
-print('スコア : ', miss, '!')
+#平均3回以内
+if(max_round * 3 >= miss):
+    print('スコア : SS!')
+#平均4回以内
+elif(max_round * 4 >= miss):
+    print('スコア : S!')
+#平均6回以内
+elif(max_round * 6 >= miss):
+    print('スコア : A!')
+#平均10回以内
+elif(max_round * 10 >= miss):
+    print('スコア : B!')
+#平均15回以内
+elif(max_round * 15 >= miss):
+    print('スコア : C!')
+#それ以外
+else:
+    print('スコア : D!')
+
+print('入力回数 : ', miss, '!')
