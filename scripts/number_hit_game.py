@@ -117,7 +117,7 @@ while(round < max_round):
             miss = miss + 1
 
 # スコアを決める
-# バグ利用
+# バグ利用時
 if(miss == 0):
     print('スコア : SSS!')
 # 平均3回以内
