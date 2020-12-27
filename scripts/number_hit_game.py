@@ -91,7 +91,8 @@ while(round < max_round):
         tmp = ""
         print("整数を入力してください。")
         tmp = input()
-        
+
+        # 入力された文字が数字か否か判別
         try:
             int(tmp)
             x = int(tmp)
@@ -105,16 +106,16 @@ while(round < max_round):
         else:
             x = x_linear((int)(x))
         
-        print(x)
-        pub.publish(x)
-        rate.sleep()
-        
         if(x == answer):
             print("クリア")
             print("")
             break
         else:
             miss = miss + 1
+
+        print(x)
+        pub.publish(miss)
+        rate.sleep()
 
 # スコアを決める
 # バグ利用時
