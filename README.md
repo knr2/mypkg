@@ -44,11 +44,12 @@ rostopic echo /game
 #### Videos
 
 後でURLを変更
-[![数当てゲーム](http://img.youtube.com/vi/UDOO2g307oI/hqdefault.jpg)](https://youtu.be/UDOO2g307oI)
+[![数当てゲーム](http://img.youtube.com/vi/CGEOpmOQD3M/hqdefault.jpg)](https://youtu.be/CGEOpmOQD3M)
 
 
 # 不具合
 
+- エラー
 プログラムを実行した際に「-/usr/bin/env: `python3\r': そのようなファイルやディレクトリはありません」と表示される。
 
 対処法
@@ -66,5 +67,6 @@ Vim
 :set ff=unix
 :wq
 ```
+- バグ
 
-Ctrl + C
+実行中に「Ctrl + C」と入力すると、自動でクリアになる。
