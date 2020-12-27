@@ -43,7 +43,6 @@ rostopic echo /game
 
 #### Videos
 
-後でURLを変更
 [![数当てゲーム](http://img.youtube.com/vi/CGEOpmOQD3M/hqdefault.jpg)](https://youtu.be/CGEOpmOQD3M)
 
 
