@@ -43,7 +43,7 @@ rostopic echo /game
 
 #### Videos
 
-[![数当てゲーム](http://img.youtube.com/vi/CGEOpmOQD3M/hqdefault.jpg)](https://youtu.be/CGEOpmOQD3M)
+[![数当てゲーム](http://img.youtube.com/vi/d8J2_--emtA/hqdefault.jpg)](https://youtu.be/d8J2_--emtA)
 
 
 # 不具合
