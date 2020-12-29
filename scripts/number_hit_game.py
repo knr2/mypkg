@@ -3,7 +3,7 @@
 """
 BSD 3-Clause License
 
-Copyright (c) 2020, nakamura ryo & Ryuichi Ueda.
+Copyright (c) 2020, Ryo Nakamura & Ryuichi Ueda.
 All rights reserved.
 """
 
