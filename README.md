@@ -32,7 +32,7 @@
 # 使用したもの
 
 - Raspberry Pi 4 (8GB)
-- Gigastone Micro SD Card (16GB)
+- Micro SD Card (Gigastone : 16GB)
 
 ※必須ではありません。Ubuntuが使えればWindows上でも問題なく動きます。
 
