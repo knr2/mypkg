@@ -2,11 +2,27 @@
 
 自作したROSパッケージを動かす際の説明です。
 
+# 目次
+
+- 概要
+- 使用したもの
+- 動作環境
+- デモ動画
+- インストール方法
+- 使用方法
+- 不具合
+- ライセンス
+
 # 概要
 
-あああ
+こんなゲームです的なことを書く
 
 # 使用したもの
+
+- Raspberry Pi 4 (8GB)
+- Gigastone Micro SD Card (16GB)
+
+※必須ではありません。Ubuntuが使えればWindows上でも問題なく動きます。
 
 
 # 動作環境
@@ -53,11 +69,6 @@ rosrun mypkg number_hit_game.py
 rostopic echo /game
 ```
 
-# ライセンス
-
-BSD 3-Clause License
-
-
 # 不具合
 
 - エラー
@@ -82,3 +93,7 @@ Vim
 - バグ
 
 実行中に「Ctrl + C」と入力すると、自動でクリアになる。
+
+# ライセンス
+
+BSD 3-Clause License
