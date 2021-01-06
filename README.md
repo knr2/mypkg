@@ -1,15 +1,27 @@
 # 数当てゲーム
 
-自作したRosパッケージを動かす際の説明です。
+自作したROSパッケージを動かす際の説明です。
+
+# 概要
+
+あああ
+
+# 使用したもの
 
 
 # 動作環境
 
 以下の環境にて動作確認を行っています。
 
-- raspberry pi 4 (8GB)
+- Raspberry Pi 4 (8GB)
 - OS: Ubuntu 20.04.1 LTS
 - ROS: Noetic
+
+
+# デモ動画
+
+[![数当てゲーム](http://img.youtube.com/vi/MDfyllj7h1Q/hqdefault.jpg)](https://youtu.be/MDfyllj7h1Q)
+
 
 # インストール方法
 
@@ -22,9 +34,9 @@ catkin_make
 source ~/.bashrc
 ```
 
-# 実行方法
+# 使用方法
 
-以下のコマンドで実行できます。
+以下のコマンドで使用できます。
 
 ターミナル１
 ```sh
@@ -41,9 +53,9 @@ rosrun mypkg number_hit_game.py
 rostopic echo /game
 ```
 
-#### Videos
+# ライセンス
 
-[![数当てゲーム](http://img.youtube.com/vi/MDfyllj7h1Q/hqdefault.jpg)](https://youtu.be/MDfyllj7h1Q)
+BSD 3-Clause License
 
 
 # 不具合
